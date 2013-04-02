@@ -1,0 +1,8 @@
+-# coding: utf-8
+
+%h2
+  データセット編集:
+  =@dataset.name
+
+-form_for :dataset, url(:setting_datasets, :update, id: @dataset.id), :method=>:put do |f|
+  =partial "settings/datasets/form", :locals => { :f => f }

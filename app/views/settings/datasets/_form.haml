@@ -1,0 +1,24 @@
+-# coding: utf-8
+
+%fieldset
+  %div
+    =label_tag :name, caption: '名前'
+    =f.text_field :name
+    =label_tag :remark, caption: '備考'
+    =f.text_area :remark
+
+  %table.table.table-bordered.table-striped
+    %tr
+      -%w{使用 名前 型 備考}.each do |header|
+        %th=header
+    -@columns.each do |column|
+      %tr
+        %td
+          -idx = @use_columns.index(column.id) unless @use_columns.nil?
+          -is_use = idx.nil? ? false : true
+          =f.check_box :"columns[#{column.id}]", checked: is_use
+        %td=column.name
+        %td=column.type
+        %td=column.remark
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  !=button_link 'cancel', url(:settings, :index)
