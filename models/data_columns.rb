@@ -3,7 +3,7 @@ class DataColumn
 
   property :id, Serial
   property :name, String
-  property :type, Enum[DataType::TYPES]
+  property :type, Enum[*DataType::TYPES]
   property :remark, Text
 
   belongs_to :account, :required=>false
