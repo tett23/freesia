@@ -7,4 +7,13 @@ class DataColumn
   property :remark, Text
 
   belongs_to :account, :required=>false
+
+  def self.list(account_id, options={})
+    default = {
+      account_id: account_id
+    }
+    options = default.merge(options)
+
+    self.all(options)
+  end
 end
