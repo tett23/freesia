@@ -4,14 +4,13 @@
 
 %h3 作成ずみのデータ型
 .row.pull-right.clearfix{style: 'margin-top: -40px'}
-  !=button_link '作成', url(:settings, :new), icon: 'plus-sign'
+  !=button_link '作成', url(:setting_columns, :new), icon: 'plus-sign'
 %table.table.table-striped
   %tr
-    -%w{id 名前 型 備考}.each do |header|
+    -%w{名前 型 備考}.each do |header|
       %th=header
   -@data_columns.each do |data_column|
     %tr
-      %td=data_column.id
       %td=data_column.name
       %td=data_column.type
       %td=data_column.remark

@@ -1,0 +1,13 @@
+-# coding: utf-8
+
+%fieldset
+  %legend データ型
+  %div
+    =label_tag :name, caption: '名前'
+    =f.text_field :name
+    =label_tag :type, caption: 'プリミティブ'
+    =f.select :type, :options=>DataType::TYPES
+    =label_tag :remark, caption: '備考'
+    =f.text_area :remark
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  !=button_link 'cancel', url(:settings, :index)

@@ -1,0 +1,6 @@
+-# coding: utf-8
+
+%h2 新規データ型作成
+
+-form_for :data_column, url(:setting_columns, :create), :method=>:post do |f|
+  =partial "settings/columns/form", :locals => { :f => f }

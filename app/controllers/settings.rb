@@ -4,8 +4,4 @@ Freesia::App.controllers :settings do
 
     render 'settings/index'
   end
-
-  get :new do
-
-  end
 end
