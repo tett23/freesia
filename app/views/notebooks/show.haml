@@ -5,10 +5,11 @@
 
 .btn-group
   -@datasets.each do |dataset|
-    !=button_link dataset.name+'の作成', url(:notebook_journals, :new, notebook_id: @notebook.id, dataset_id: dataset.id)
+    !=button_link dataset.name+'からジャーナルを作成', url(:notebook_journals, :new, notebook_id: @notebook.id, dataset_id: dataset.id)
 
 -@notebook.journals.each do |journal|
   -journal.datasets.each do |dataset|
+    %h3=journal.id
     %table.table.table-bordered
       %tr
         -dataset.columns.each do |column|
