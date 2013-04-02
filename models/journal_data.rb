@@ -1,4 +1,4 @@
-class Journal
+class JournalDatum
   include DataMapper::Resource
 
   property :id, Serial
