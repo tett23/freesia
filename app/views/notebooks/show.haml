@@ -8,12 +8,13 @@
     !=button_link dataset.name+'からジャーナルを作成', url(:notebook_journals, :new, notebook_id: @notebook.id, dataset_id: dataset.id)
 
 -@notebook.journals.each do |journal|
+  %h3
+    =link_to 'journal: '+journal.id.to_s, url(:notebook_journals, :show, notebook_id: @notebook.id, journal_id: journal.id)
   -journal.datasets.each do |dataset|
-    %h3=journal.id
     %table.table.table-bordered
       %tr
         -dataset.columns.each do |column|
           %th=column.name
       %tr
-        -journal.journal_data.each do |data|
+        -journal.journal_data.all(dataset: dataset).each do |data|
           %td=data.value

@@ -1,0 +1,15 @@
+-# coding: utf-8
+
+%h2=@journal.id
+.btn-group
+  -@datasets.each do |dataset|
+    !=button_link dataset.name+'を追加', url(:journal_datasets, :new, notebook_id: @notebook.id, notebook_journal_id: @journal.id, dataset_id: dataset.id)
+
+-@journal.datasets.each do |dataset|
+  %table.table.table-bordered
+    %tr
+      -dataset.columns.each do |column|
+        %th=column.name
+    %tr
+      -@journal.journal_data.each do |data|
+        %td=data.value

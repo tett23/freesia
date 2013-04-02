@@ -1,48 +1,38 @@
 # coding: utf-8
 
-Freesia::App.controllers :notebook_journals, parent: :notebooks do
+Freesia::App.controllers :journal_datasets, parent: [:notebooks, :notebook_journals] do
   before do
     @notebook = Notebook.get(params[:notebook_id])
     return error 404 if @notebook.nil?
     return error 403 unless @notebook.account_id == current_account.id
-  end
 
-  get :show, with: :journal_id do |notebook_id, journal_id|
-    @journal = Journal.get(journal_id)
+    @journal = Journal.get(params[:notebook_journal_id])
     return error 404 if @journal.nil?
     return error 403 unless @journal.account_id == current_account.id
-    @datasets = Dataset.list(current_account.id)
-
-    render 'notebooks/journals/show'
   end
 
-  get :new , with: :dataset_id do |notebook_id, dataset_id|
+  get :new , with: :dataset_id do |notebook_id, journal_id, dataset_id|
     @dataset = Dataset.get(dataset_id)
     return error 404 if @dataset.nil?
     return error 403 unless @dataset.account_id == current_account.id
 
-    render 'notebooks/journals/new'
+    render 'notebooks/journals/datasets/new'
   end
 
-  post :create, with: :dataset_id do |notebook_id, dataset_id|
+  post :create, with: :dataset_id do |notebook_id, journal_id, dataset_id|
     @dataset = Dataset.get(dataset_id)
     return error 404 if @dataset.nil?
     return error 403 unless @dataset.account_id == current_account.id
 
-    journal = Journal.create(
-      account_id: current_account.id,
-    )
-    @notebook.journals << journal
-    @notebook.save()
     DatasetJournal.create(
-      journal_id: journal.id,
+      journal_id: journal_id,
       dataset_id: @dataset.id
     )
 
     params[:journal].each do |column_id, value|
       journal_datum = {
         value: value,
-        journal_id: journal.id,
+        journal_id: journal_id,
         dataset_id: @dataset.id,
         data_column_id: column_id
       }
