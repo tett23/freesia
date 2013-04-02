@@ -13,7 +13,7 @@ DataMapper.logger = logger
 DataMapper::Property::String.length(255)
 
 case Padrino.env
-  when :development then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "freesia_development.db"))
-  when :production  then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "freesia_production.db"))
-  when :test        then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "freesia_test.db"))
+  when :development then DataMapper.setup(:default, "mysql://tett23:password@localhost/freesia_development")
+  when :production  then DataMapper.setup(:default, "mysql://tett23:password@localhost/freesia_production")
+  when :test        then DataMapper.setup(:default, "mysql://tett23:password@localhost/freesia_test")
 end

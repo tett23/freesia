@@ -16,7 +16,7 @@ gem 'rake'
 # Component requirements
 gem 'sass'
 gem 'haml'
-gem 'dm-sqlite-adapter'
+gem 'dm-mysql-adapter'
 gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-migrations'
