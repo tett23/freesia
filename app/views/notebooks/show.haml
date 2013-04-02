@@ -3,3 +3,16 @@
 %h2=@notebook.name
 !=simple_format @notebook.remark
 
+.btn-group
+  -@datasets.each do |dataset|
+    !=button_link dataset.name+'の作成', url(:notebook_journals, :new, notebook_id: @notebook.id, dataset_id: dataset.id)
+
+-@notebook.journals.each do |journal|
+  -journal.datasets.each do |dataset|
+    %table.table.table-bordered
+      %tr
+        -dataset.columns.each do |column|
+          %th=column.name
+      %tr
+        -journal.journal_data.each do |data|
+          %td=data.value

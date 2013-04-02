@@ -2,7 +2,7 @@ class JournalDatum
   include DataMapper::Resource
 
   property :id, Serial
-  property :data, Object
+  property :value, Object
 
   belongs_to :journal
   belongs_to :dataset
