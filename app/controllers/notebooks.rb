@@ -6,6 +6,14 @@ Freesia::App.controllers :notebooks do
     render 'notebooks/index'
   end
 
+  get :show, with: :id do |id|
+    @notebook = Notebook.get(id)
+    return error 404 if @notebook.nil?
+    return error 403 unless @notebook.account_id == current_account.id
+
+    render 'notebooks/show'
+  end
+
   get :new do
     render 'notebooks/new'
   end

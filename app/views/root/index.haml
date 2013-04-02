@@ -1,0 +1,6 @@
+-# coding: utf-8
+
+%ul
+  -@notebooks.each do |notebook|
+    %li
+      =link_to notebook.name, url(:notebooks, :show, id: notebook.id)
