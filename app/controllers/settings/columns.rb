@@ -1,6 +1,6 @@
 # coding: utf-8
 
-Freesia::App.controllers :setting_columns, map: '/settings' do
+Freesia::App.controllers :setting_columns, map: '/settings/columns' do
   get :new do
     render 'settings/columns/new'
   end
