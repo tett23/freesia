@@ -1,9 +1,9 @@
 -# coding: utf-8
 
-.span3.hidden-phone
-  .well.sidebar-nav
-    %ul.nav.nav-list
-      -if logged_in?
+-if logged_in?
+  .span3.hidden-phone
+    .well.sidebar-nav
+      %ul.nav.nav-list
         %li.nav-header Notebooks
         -@notebooks.each do |notebook|
-          %li=link_to notebook.title, url(:notebooks, :show, :id=>notebook.id)
+          %li=link_to notebook.name, url(:notebooks, :show, screen_name: notebook.account.screen_name, slug: notebook.slug)

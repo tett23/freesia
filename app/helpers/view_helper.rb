@@ -43,7 +43,7 @@ EOS
         },
         navigations: [
           {
-            title: '', url: ''
+            title: '新規ノートブック', url: url(:notebooks, :new, screen_name: params[:screen_name])
           }
         ]
       }

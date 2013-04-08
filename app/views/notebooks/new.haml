@@ -2,5 +2,5 @@
 
 %h2 新規ノートブック作成
 
--form_for :notebook, url(:notebooks, :create), :method=>:post do |f|
+-form_for :notebook, url(:notebooks, :create, screen_name: params[:screen_name]), :method=>:post do |f|
   =partial "notebooks/form", :locals => { :f => f }
