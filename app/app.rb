@@ -29,6 +29,7 @@ module Freesia
     before do
       if logged_in?
         @notebooks = Notebook.list(current_account.id)
+        add_breadcrumbs('freesia', url('/'))
       end
     end
   end

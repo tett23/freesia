@@ -27,4 +27,8 @@ class Account
   def self.find_by_id(id)
     get(id)
   end
+
+  def self.detail(screen_name)
+    first(screen_name: screen_name)
+  end
 end
