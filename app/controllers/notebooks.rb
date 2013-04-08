@@ -1,6 +1,10 @@
 # coding: utf-8
 
 Freesia::App.controllers :notebooks, map: '/:screen_name' do
+  before do
+    @page_header = :notebooks
+  end
+
   get :show, with: :slug do |screen_name, slug|
     @notebook = Notebook.first(account_id: current_account.id, slug: slug)
     return error 404 if @notebook.nil?
@@ -11,12 +15,15 @@ Freesia::App.controllers :notebooks, map: '/:screen_name' do
   end
 
   get :new do
+    @page_header = :accounts
+
     render 'notebooks/new'
   end
 
   post :create do |screen_name|
     params[:notebook][:account_id] = current_account.id
     @notebook = Notebook.new(params[:notebook])
+    @page_header = :accounts
 
     if @notebook.save
       message = "#{@notebook.name}を作成しました"

@@ -28,9 +28,8 @@ EOS
     locals = {
       locals: {navigation: page_header_mapping()}
     }
-    case @page_header
-    when :accounts then partial 'layouts/page_header', locals
-    end
+
+    partial 'layouts/page_header', locals
   end
 
   private
@@ -46,6 +45,13 @@ EOS
             title: '新規ノートブック', url: url(:notebooks, :new, screen_name: params[:screen_name])
           }
         ]
+      }
+    when :notebooks
+      {
+        brand: {
+          title: @notebook.name, url: url(:notebooks, :show, screen_name: @notebook.account_id, slug: @notebook.slug)
+        },
+        navigations: []
       }
     end
   end
