@@ -27,11 +27,10 @@
     #wrap.container-fluid
       -if logged_in?
         .row-fluid
+          =partial 'layouts/sidebar'
           .span9
-            =flash_tag :success, :class=>'alert alert-success'
-            =flash_tag :info, :class=>'alert alert-info'
-            =flash_tag :error, :class=>'alert alert-error'
-            =flash_tag :warning, :class=>'alert alert-warning'
+            =partial 'layouts/infomations'
+            =page_header
             =yield
       -else
         .row-fluid

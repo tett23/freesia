@@ -22,8 +22,14 @@ module Freesia
       role.allow '/auth'
     end
 
-  access_control.roles_for :users do |role|
-    role.allow '/sessions'
-  end
+    access_control.roles_for :users do |role|
+      role.allow '/sessions'
+    end
+
+    before do
+      if logged_in?
+        @notebooks = Notebook.list(current_account.id)
+      end
+    end
   end
 end

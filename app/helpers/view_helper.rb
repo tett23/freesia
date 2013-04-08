@@ -21,4 +21,32 @@ EOS
 
     Haml::Engine.new(haml).render(Object.new, :attributes=>attributes)
   end
+
+  def page_header
+    return '' unless logged_in?
+
+    locals = {
+      locals: {navigation: page_header_mapping()}
+    }
+    case @page_header
+    when :accounts then partial 'layouts/page_header', locals
+    end
+  end
+
+  private
+  def page_header_mapping
+    case @page_header
+    when :accounts
+      {
+        brand: {
+          title: current_account.name, url: url(:accounts, :index, screen_name: params[:screen_name])
+        },
+        navigations: [
+          {
+            title: '', url: ''
+          }
+        ]
+      }
+    end
+  end
 end
