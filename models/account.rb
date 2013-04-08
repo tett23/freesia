@@ -5,7 +5,7 @@ class Account
   property :name, String
   property :email, String
   property :role, String
-  property :screen_name, String
+  property :screen_name, String, :unique=>true
   property :uid, String
   property :provider, String
   property :updated_at, DateTime
