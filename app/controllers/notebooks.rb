@@ -5,7 +5,7 @@ Freesia::App.controllers :notebooks, map: '/:screen_name' do
     @page_header = :notebooks
   end
 
-  get :show, with: :slug do |screen_name, slug|
+  get :show, map: '/:screen_name/:slug' do |screen_name, slug|
     @notebook = Notebook.first(account_id: current_account.id, slug: slug)
     return error 404 if @notebook.nil?
     return error 403 unless @notebook.account_id == current_account.id
@@ -32,6 +32,25 @@ Freesia::App.controllers :notebooks, map: '/:screen_name' do
     else
       flash[:error] = set_form_errors(@notebook)
       render 'notebooks/new'
+    end
+  end
+
+  get :edit, map: '/:screen_name/:slug/edit' do |screen_name, slug|
+    @notebook = Notebook.detail(current_account.id, slug)
+
+    render 'notebooks/edit'
+  end
+
+  put :update, with: :slug do |screen_name, slug|
+    @notebook = Notebook.detail(current_account.id, slug)
+
+    if @notebook.update(params[:notebook])
+      message = "#{@notebook.name}を編集しました"
+      flash[:success] = message
+      redirect url(:notebooks, :show, screen_name: @notebook.account.screen_name, slug: @notebook.slug)
+    else
+      flash[:error] = set_form_errors(@notebook)
+      render 'notebooks/edit'
     end
   end
 end

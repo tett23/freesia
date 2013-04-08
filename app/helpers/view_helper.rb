@@ -47,11 +47,15 @@ EOS
         ]
       }
     when :notebooks
+      screen_name = @notebook.account.screen_name
+
       {
         brand: {
-          title: @notebook.name, url: url(:notebooks, :show, screen_name: @notebook.account_id, slug: @notebook.slug)
+          title: @notebook.name, url: url(:notebooks, :show, screen_name: screen_name, slug: @notebook.slug)
         },
-        navigations: []
+        navigations: [
+          {title: 'edit', url: url(:notebooks, :edit, screen_name: screen_name, slug: @notebook.slug)}
+        ]
       }
     end
   end

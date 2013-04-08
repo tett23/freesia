@@ -22,9 +22,7 @@ class Notebook
     self.all(options)
   end
 
-  def self.detail(screen_name, slug)
-    Account.first(screen_name: screen_name)
-
+  def self.detail(account_id, slug)
     first(
       account_id: account_id,
       slug: slug
@@ -39,6 +37,7 @@ class Notebook
     )
 
     return true if notebook.nil?
+    return true if notebook.id == self.id
 
     [false, "識別子に#{self.slug}を持つノートブックがすでにあります"]
   end
