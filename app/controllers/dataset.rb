@@ -1,6 +1,6 @@
 # coding: utf-8
 
-Freesia::App.controllers :journal_datasets, parent: [:notebooks, :notebook_journals] do
+Freesia::App.controllers :dataset, map: '/:screen_name/:slug/dataset' do
   before do
     @notebook = Notebook.get(params[:notebook_id])
     return error 404 if @notebook.nil?
