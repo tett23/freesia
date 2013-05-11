@@ -31,6 +31,7 @@ Freesia::App.controllers :notebooks, map: '/:screen_name', priority: :low do
   end
 
   get :show, map: '/:screen_name/:slug', priority: :low do |screen_name, slug|
+    pass if current_account.nil?
     @notebook = Notebook.first(account_id: current_account.id, slug: slug)
     return error 404 if @notebook.nil?
     return error 403 unless @notebook.account_id == current_account.id
