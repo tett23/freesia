@@ -55,7 +55,8 @@ EOS
           title: @notebook.name, url: url(:notebooks, :show, screen_name: screen_name, slug: @notebook.slug)
         },
         navigations: [
-          {title: 'edit', url: url(:notebooks, :edit, screen_name: screen_name, slug: @notebook.slug)}
+          {title: 'edit', url: url(:notebooks, :edit, screen_name: screen_name, slug: @notebook.slug)},
+          {title: 'dataset', url: url(:dataset, :index, screen_name: screen_name, slug: @notebook.slug)}
         ]
       }
     end
