@@ -36,6 +36,12 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 # Padrino Stable Gem
 gem 'padrino', '0.11.0'
 
+group :development do
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
+end
+
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
 
