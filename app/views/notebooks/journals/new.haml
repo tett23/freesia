@@ -1,6 +1,0 @@
--# coding: utf-8
-
-%h2 新規ジャーナル作成
-
--form_for :journal, url(:notebook_journals, :create, notebook_id: @notebook.id, dataset_id: @dataset.id), :method=>:post do |f|
-  =partial "notebooks/journals/form", :locals => {f: f, dataset: @dataset}

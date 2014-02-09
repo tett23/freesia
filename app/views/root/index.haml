@@ -1,5 +1,0 @@
--# coding: utf-8
-
-%ul
-  -@notebooks.each do |notebook|
-    %li=link_to notebook.name, url(:notebooks, :show, screen_name: notebook.account.screen_name, slug: notebook.slug)

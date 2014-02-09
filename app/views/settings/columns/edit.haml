@@ -1,8 +1,0 @@
--# coding: utf-8
-
-%h2
-  データ型編集:
-  =@data_column.name
-
--form_for :data_column, url(:setting_columns, :update, id: @data_column.id), :method=>:put do |f|
-  =partial "settings/columns/form", :locals => { :f => f }
