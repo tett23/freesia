@@ -1,4 +1,5 @@
 Freesia::Application.routes.draw do
+  get "dataset/settings/column"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -6,7 +7,7 @@ Freesia::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  namespace :config do
+  namespace :settings do
     resources :column
     resources :dataset
   end
