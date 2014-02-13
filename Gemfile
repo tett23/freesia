@@ -23,6 +23,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'bootstrap-sass-rails'
+
 group :development do
   gem 'thin'
 end
