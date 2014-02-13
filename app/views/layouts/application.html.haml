@@ -1,9 +1,24 @@
 !!!
 %html
   %head
+    %meta{charset: 'utf-8'}
+    %meta{:'http-equiv'=>'X-UA-Compatible', :'content'=>'IE=edge'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
     %title Freesia
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag 'defaults', 'rails', "application"
     = csrf_meta_tags
   %body
-    = yield
+    .container
+      .navbar.navbar-default{role: 'navigation'}
+        .container-fluid
+          .navbar-header
+            =link_to 'Freesia', '/', class: 'navbar-brand'
+          .navbar-collapse.collapse
+            %ul.nav.navbar-nav
+              %li
+            %ul.nav.navbar-nav.navbar-right
+              %li=link_to 'config', '#'
+
+      .row
+        = yield
