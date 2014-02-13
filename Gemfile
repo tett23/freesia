@@ -23,6 +23,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'jquery-rails'
 gem 'bootstrap-sass-rails'
 
 group :development do

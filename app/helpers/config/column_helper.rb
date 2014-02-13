@@ -1,0 +1,2 @@
+module Config::ColumnHelper
+end
